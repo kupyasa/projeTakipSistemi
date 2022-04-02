@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-center">Aktif dönemi değiştir</h5>
-            @if (aktif_donem != null)
+            @if ($aktif_donem != null)
                 <h6><b>Aktif dönem : {{ $aktif_donem->yil }} {{ $aktif_donem->donem }}</b></h6>
             @endif
 
