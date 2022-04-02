@@ -110,7 +110,7 @@ class SistemYoneticisiController extends Controller
 
     public function aktifDonemGet()
     {
-        $aktif_donem = '';
+        $aktif_donem = null;
         if (AktifDonem::where('id', '=', 1)->exists()) {
             $aktif_donem = AktifDonem::find(1);
         }

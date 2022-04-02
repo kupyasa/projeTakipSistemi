@@ -8,9 +8,11 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-center">Aktif dönemi değiştir</h5>
-            <h6><b>Aktif dönem : {{$aktif_donem->yil}}  {{$aktif_donem->donem}}</b></h6>
-            <form action="{{ route('sistemyoneticisi.aktifdonempost') }}" method="POST"
-                enctype="multipart/form-data">
+            @if (aktif_donem != null)
+                <h6><b>Aktif dönem : {{ $aktif_donem->yil }} {{ $aktif_donem->donem }}</b></h6>
+            @endif
+
+            <form action="{{ route('sistemyoneticisi.aktifdonempost') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="yil" class="form-label">Aktif yıl</label>
