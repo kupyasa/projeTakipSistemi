@@ -27,23 +27,28 @@ class SistemYoneticisiKullaniciController extends Controller
             'image' => 'image'
         ]);
 
-
+        $path=null;
         $imagename = null;
         if ($request->has('image')) {
             if (File::exists(public_path('images/profile_photos/' . $user->profile_photo))) {
                 File::delete(public_path('images/profile_photos/' . $user->profile_photo));
             }
             $imagename = date('dmYHi') . $request->image->getClientOriginalName();
-            $request->image->move(public_path('images/profile_photos'), $imagename);
+            //$request->image->move(public_path('images/profile_photos'), $imagename);
+            $path = $request->file('avatar')->storeAs(
+                'images/profile_photos/',
+                $imagename,
+                's3'
+            );
         } else {
-            $imagename = $user->profile_photo;
+            $path = $user->profile_photo;
         }
 
         if ($request->role == "Öğrenci") {
             $user->name = $request->name;
             $user->surname = $request->surname;
             $user->email = $request->email;
-            $user->profile_photo = $imagename;
+            $user->profile_photo = $path;
             $user->phone_number = $request->phone_number;
             $user->faculty = $request->faculty;
             $user->department = $request->department;
@@ -54,7 +59,7 @@ class SistemYoneticisiKullaniciController extends Controller
             $user->name = $request->name;
             $user->surname = $request->surname;
             $user->email = $request->email;
-            $user->profile_photo = $imagename;
+            $user->profile_photo = $path;
             $user->phone_number = $request->phone_number;
             $user->faculty = $request->faculty;
             $user->department = $request->department;
