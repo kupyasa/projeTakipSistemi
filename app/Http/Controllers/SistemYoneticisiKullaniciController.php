@@ -36,7 +36,7 @@ class SistemYoneticisiKullaniciController extends Controller
             }
             $imagename = date('dmYHi') . $request->image->getClientOriginalName();
             //$request->image->move(public_path('images/profile_photos'), $imagename);
-            $path = Storage::disk('s3')->put('images/profile_photos/', $request->image,['bucket'=>'projetakipsistemi']);
+            $path = Storage::disk('s3')->put('images/profile_photos/', $request->image,'projetakipsistemi');
             $path = Storage::url($path);
         } else {
             $path = $user->profile_photo;
