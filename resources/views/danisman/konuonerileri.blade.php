@@ -37,7 +37,7 @@
                                 <p><b>Proje Konu Yıl :</b> {{ $konu_onerisi->konu_proje_yil }}</p>
                                 <p><b>Proje Konu Dönem :</b> {{ $konu_onerisi->konu_proje_donem }}</p>
                                 <h3>Öğrenci Bilgileri</h3>
-                                @if ($konu_onerisi->ogrenci_foto)
+                                @if ($konu_onerisi->ogrenci_foto && file_exists(public_path('images/profile_photos/')))
                                     <img src="{{ asset('images/profile_photos/' . $konu_onerisi->ogrenci_foto) }}"
                                         class="rounded mx-auto d-block" style="width: 25%;height:25%">
                                 @endif
