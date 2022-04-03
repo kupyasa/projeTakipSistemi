@@ -39,9 +39,8 @@
                                 <h3>Öğrenci Bilgileri</h3>
                                 @if ($konu_onerisi->ogrenci_foto && file_exists(public_path('images/profile_photos/'.$konu_onerisi->ogrenci_foto)))
                                     <img src="{{ asset('images/profile_photos/' . $konu_onerisi->ogrenci_foto) }}"
-                                        class="rounded mx-auto d-block" style="width: 25%;height:25%">
+                                        class="rounded mx-auto d-block mb-3" style="width: 25%;height:25%">
                                 @endif
-                                <br><br>
                                 <p><b>Öğrenci Ad Soyad :</b>
                                     {{ $konu_onerisi->ogrenci_ad }}
                                     {{ $konu_onerisi->ogrenci_soyad }}</p>
