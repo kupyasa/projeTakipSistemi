@@ -12,7 +12,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                @if ($user->profile_photo && file_exists(public_path('images/profile_photos/')))
+                @if ($user->profile_photo && file_exists(public_path('images/profile_photos/'.$user->profile_photo)))
                     <img src="{{ asset('images/profile_photos/' . $user->profile_photo) }}" class="rounded mx-auto d-block"
                         style="width: 25%;height:25%">
                 @endif
