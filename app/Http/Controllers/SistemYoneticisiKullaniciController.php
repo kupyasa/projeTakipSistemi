@@ -37,6 +37,7 @@ class SistemYoneticisiKullaniciController extends Controller
             //$request->image->move(public_path('images/profile_photos'), $imagename);
             $path = $request->file('image')->store(
                 'images/profile_photos/',
+                'projetakipsistemi',
                 's3'
             );
         } else {
