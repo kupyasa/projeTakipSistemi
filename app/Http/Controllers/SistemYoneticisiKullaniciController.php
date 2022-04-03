@@ -35,9 +35,8 @@ class SistemYoneticisiKullaniciController extends Controller
             }
             $imagename = date('dmYHi') . $request->image->getClientOriginalName();
             //$request->image->move(public_path('images/profile_photos'), $imagename);
-            $path = $request->file('image')->storeAs(
+            $path = $request->file('image')->store(
                 'images/profile_photos/',
-                $imagename,
                 's3'
             );
         } else {
