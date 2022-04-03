@@ -28,26 +28,23 @@ class SistemYoneticisiKullaniciController extends Controller
             'image' => 'image'
         ]);
 
-        $path=null;
+        
         $imagename = null;
         if ($request->has('image')) {
             if (File::exists(public_path('images/profile_photos/' . $user->profile_photo))) {
                 File::delete(public_path('images/profile_photos/' . $user->profile_photo));
             }
             $imagename = date('dmYHi') . $request->image->getClientOriginalName();
-            //$request->image->move(public_path('images/profile_photos'), $imagename);
-            dd(Storage::disk('s3')->exists('images/profile_photos/pexels-photo-220453.webp'));
-            $path = Storage::disk('s3')->put('images/profile_photos/', $request->image,'projetakipsistemi');
-            $path = Storage::url($path);
+            $request->image->move(public_path('images/profile_photos'), $imagename);
         } else {
-            $path = $user->profile_photo;
+            $imagename = $user->profile_photo;
         }
 
         if ($request->role == "Öğrenci") {
             $user->name = $request->name;
             $user->surname = $request->surname;
             $user->email = $request->email;
-            $user->profile_photo = $path;
+            $user->profile_photo = $imagename;
             $user->phone_number = $request->phone_number;
             $user->faculty = $request->faculty;
             $user->department = $request->department;
@@ -58,7 +55,7 @@ class SistemYoneticisiKullaniciController extends Controller
             $user->name = $request->name;
             $user->surname = $request->surname;
             $user->email = $request->email;
-            $user->profile_photo = $path;
+            $user->profile_photo = $imagename;
             $user->phone_number = $request->phone_number;
             $user->faculty = $request->faculty;
             $user->department = $request->department;
