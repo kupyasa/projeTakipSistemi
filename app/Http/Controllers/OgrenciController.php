@@ -60,6 +60,14 @@ class OgrenciController extends Controller
             'proje_arastirma' => 'min:300',
 
         ]);
+        if ((count(explode(" ",$request->proje_amac)) < 200) ||
+            (count(explode(" ",$request->proje_onem)) < 200) ||
+            (count(explode(" ",$request->proje_kapsam)) < 200) ||
+            (count(explode(" ",$request->proje_materyal)) < 300) ||
+            (count(explode(" ",$request->proje_yontem)) < 300) ||
+            (count(explode(" ",$request->proje_arastirma)) < 300)) {
+            return redirect(route('ogrenci.konuonerisiyapget'));
+        }
 
         $konular = DB::table('konus')->whereNotNull('proje_baslik')->get();
         if (!$konular->isEmpty()) {
