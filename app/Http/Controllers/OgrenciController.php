@@ -253,7 +253,7 @@ class OgrenciController extends Controller
 
             if ($request->has('rapor2doc')) {
                 $request->validate([
-                    'rapor2doc' => 'mimes:doc,docx,obt'
+                    'rapor2doc' => 'mimetypes:application/vnd.oasis.opendocument.text,application/octet-stream,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword'
                 ]);
 
                 $filename = date('dmYHi') . $request->rapor2doc->getClientOriginalName();
@@ -301,7 +301,7 @@ class OgrenciController extends Controller
 
             if ($request->has('rapor3doc')) {
                 $request->validate([
-                    'rapor3doc' => 'mimes:doc,docx,obt'
+                    'rapor3doc' => 'mimetypes:application/vnd.oasis.opendocument.text,application/octet-stream,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword'
                 ]);
 
                 $filename = date('dmYHi') . $request->rapor3doc->getClientOriginalName();
