@@ -9,7 +9,7 @@
         <div class="card-body">
             <h5 class="card-title text-center">Sisteme yeni danışman ekle</h5>
             <form action="{{route('sistemyoneticisi.danismaneklepost')}}" method="POST" enctype="multipart/form-data">
-                @csrf               
+                @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Ad</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -52,5 +52,4 @@
             </form>
         </div>
     </div>
-
 </x-app>
